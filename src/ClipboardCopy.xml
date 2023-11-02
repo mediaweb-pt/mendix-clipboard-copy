@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget
+    id="mediaweb.clipboardcopy.ClipboardCopy"
+    pluginWidget="true"
+    needsEntityContext="true"
+    offlineCapable="true"
+    supportedPlatform="Web"
+    xmlns="http://www.mendix.com/widget/1.0/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd"
+>
+    <name>Clipboard Copy</name>
+    <description>Copy text to Clipboard by clicking an area (with your custom content), button or link</description>
+    <icon />
+    <properties>
+        <property key="componentStyle" type="enumeration" defaultValue="area">
+            <caption>Component Style</caption>
+            <category>General</category>
+            <description>Variation of the component that it is used, area (your custom content), button or link</description>
+            <enumerationValues>
+                <enumerationValue key="area">Area</enumerationValue>
+                <enumerationValue key="button">Button</enumerationValue>
+                <enumerationValue key="link">Link</enumerationValue>
+            </enumerationValues>
+        </property>
+        <property key="stringToCopy" type="expression" required="false" defaultValue="">
+            <caption>String to Copy</caption>
+            <category>General</category>
+            <description>String that is going to be copied to the clipboard</description>
+            <returnType type="String" />
+        </property>
+        <property key="content" type="widgets" required="false">
+            <caption>Widgets (Area Only)</caption>
+            <category>General</category>
+            <description>Defines the Content/Widgets in Area</description>
+        </property>
+
+        <property key="icon" type="icon" required="false">
+            <caption>Icon</caption>
+            <category>General</category>
+            <description>Button and Link Icon</description>
+        </property>
+
+        <property key="linkText"  type="expression" required="false" defaultValue="'Copy to clipboard'">
+            <caption>Text in Link</caption>
+            <category>Link</category>
+            <description>Text displayed on Link</description>
+            <returnType type="String" />
+        </property>
+
+        <property key="btnStyle" type="enumeration" defaultValue="default">
+            <caption>Component Style</caption>
+            <category>Button</category>
+            <description>Defines class applied to Button</description>
+            <enumerationValues>
+                <enumerationValue key="default">Default</enumerationValue>
+                <enumerationValue key="inverse">Inverse</enumerationValue>
+                <enumerationValue key="primary">Primary</enumerationValue>
+                <enumerationValue key="info">Info</enumerationValue>
+                <enumerationValue key="success">Success</enumerationValue>
+                <enumerationValue key="warning">Warning</enumerationValue>
+                <enumerationValue key="danger">Danger</enumerationValue>
+            </enumerationValues>
+        </property>
+        <property key="btnText" type="expression" required="false" defaultValue="'Copy to clipboard'">
+            <caption>Text in Button</caption>
+            <category>Button</category>
+            <description>Text displayed on button</description>
+            <returnType type="String" />
+        </property>
+
+        <property key="hasTooltip" type="boolean" defaultValue="true">
+            <caption>Show Tooltip</caption>
+            <category>Tooltip</category>
+            <description>Defines if the tooltip is rendered</description>
+        </property>
+        <property key="textBeforeCopy" type="expression" required="false" defaultValue="'Copy to clipboard'">
+            <caption>Text Before Copy</caption>
+            <category>Tooltip</category>
+            <description>
+                Defines the text that is shown in the tooltip before the area is clicked. If empty the tooltip won't
+                show
+            </description>
+            <returnType type="String" />
+        </property>
+        <property key="textAfterCopy" type="expression" required="false" defaultValue="'Copied to clipboard!'">
+            <caption>Text After Copy</caption>
+            <category>Tooltip</category>
+            <description>
+                Defines the text that is shown in the tooltip after the area is clicked. When this tooltip closes it
+                resets back to the "Text Before Copy". If empty the tooltip won't show
+            </description>
+            <returnType type="String" />
+        </property>
+        <property key="tooltipPosition" type="enumeration" defaultValue="top">
+            <caption>Tooltip Position</caption>
+            <category>Tooltip</category>
+            <description>It defines where the tooltip appears in relation to the area that triggers it</description>
+            <enumerationValues>
+                <enumerationValue key="top">Top</enumerationValue>
+                <enumerationValue key="top_start">Top Start</enumerationValue>
+                <enumerationValue key="top_end">Top End</enumerationValue>
+                <enumerationValue key="right">Right</enumerationValue>
+                <enumerationValue key="right_start">Right Start</enumerationValue>
+                <enumerationValue key="right_end">Right End</enumerationValue>
+                <enumerationValue key="bottom">Bottom</enumerationValue>
+                <enumerationValue key="bottom_start">Bottom Start</enumerationValue>
+                <enumerationValue key="bottom_end">Bottom End</enumerationValue>
+                <enumerationValue key="left">Left</enumerationValue>
+                <enumerationValue key="left_start">Left Start</enumerationValue>
+                <enumerationValue key="left_end">Left End</enumerationValue>
+            </enumerationValues>
+        </property>
+        <property key="tooltipVariant" type="enumeration" defaultValue="dark">
+            <caption>Tooltip Variation</caption>
+            <category>Tooltip</category>
+            <description>It defines the tooltip style variation</description>
+            <enumerationValues>
+                <enumerationValue key="dark">Dark</enumerationValue>
+                <enumerationValue key="light">Light</enumerationValue>
+                <enumerationValue key="success">Success</enumerationValue>
+                <enumerationValue key="warning">Warning</enumerationValue>
+                <enumerationValue key="error">Error</enumerationValue>
+                <enumerationValue key="info">Info</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="advancedOptions" type="boolean" defaultValue="false">
+            <caption>Advanced Options</caption>
+            <category>Tooltip</category>
+            <description>Displays advanced options for the tooltip (only affects Studio Pro)</description>
+        </property>
+        <property key="tooltipClass" type="expression" required="false" defaultValue="">
+            <caption>Tooltip Class</caption>
+            <category>TooltipAdvanced</category>
+            <description>Custom class applied to the tooltip</description>
+            <returnType type="String" />
+        </property>
+        <property key="noArrow" type="boolean" defaultValue="false">
+            <caption>Disable Arrow</caption>
+            <category>TooltipAdvanced</category>
+            <description>Disable the arrow on the tooltip</description>
+        </property>
+        <property key="tooltipArrowClass" type="expression" required="false" defaultValue="">
+            <caption>Arrow Class</caption>
+            <category>TooltipAdvanced</category>
+            <description>Custom class applied to the tooltip arrow</description>
+            <returnType type="String" />
+        </property>
+        <property key="tooltipOffset" type="integer" defaultValue="10">
+            <caption>Tooltip Offset</caption>
+            <category>TooltipAdvanced</category>
+            <description>Distance in px between the area and the tooltip (default is 10)</description>
+        </property>
+        <property key="delayShow" type="integer" defaultValue="0">
+            <caption>Show Delay</caption>
+            <category>TooltipAdvanced</category>
+            <description>Defines the delay in ms for the tooltip to appear after the component was hovered</description>
+        </property>
+        <property key="delayHide" type="integer" defaultValue="0">
+            <caption>Hide Delay</caption>
+            <category>TooltipAdvanced</category>
+            <description>
+                Defines the delay in ms for the tooltip to hide after the component is no longer hovered
+            </description>
+        </property>
+    </properties>
+</widget>

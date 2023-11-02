@@ -1,0 +1,14 @@
+/*
+Place your custom CSS here
+*/
+@import "react-tooltip/dist/react-tooltip.css";
+
+.clipboard-wrapper {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+}
+
+.clipboard-link {
+    cursor: pointer;
+}
