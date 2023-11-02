@@ -1,4 +1,4 @@
-# tests/testProject/
+tests/testProject/
 .DS_Store
 .idea
 .vscode
@@ -16,5 +16,5 @@ mendixProject
 **/e2e/diffs
 **/screenshot
 **/screenshot-results
-# **/tests/testProject
+**/tests/testProject
 **/artifacts
